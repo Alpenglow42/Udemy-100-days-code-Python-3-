@@ -1,0 +1,161 @@
+# this was my first try to creat solotion. and I was pretty there although some code was as elogant as instructors.
+
+
+
+
+
+
+
+
+blackjack game
+#dealer compiler
+#advance compare precentages of hand to hit or not. 
+#player user input
+# dictionary with Key for cars 2 - J,Q,K, A and value pairs
+#need something to evaluet the vaulue in dictionary
+# compare those to at, near, or over 21
+
+import random
+
+
+
+# card deck will be a list
+# suit will not be represented in deck
+# ace will be an if statemnt for deciding if it's worth a 1
+
+
+
+
+def hit_one():
+  
+    global hit_two
+    player_cards.append(card_5) #deals extra card
+    print(player_cards)
+    if player_cards[0] + player_cards[1] + player_cards[2] > 21:
+      print("you are bust, you loose")
+      print(f"Player has {player_cards}")
+    elif player_cards[0] + player_cards[1] + player_cards[2] < 21:
+      hit_two = input("Do you want to hit again? Four 4 cards sir.")
+      if hit_two == 'y':
+        hit_again()
+      elif hit_two == 'n':
+        end_game()
+    elif player_cards[0] + player_cards[1] + player_cards[2] == 21:
+      print ("21 you win")
+      place_bet(bet)
+
+def hit_again():
+  global hit_two
+  if hit_two == "y":
+    
+    player_cards.append(card_6) #deals extra card
+    print(player_cards)
+    if player_cards[0] + player_cards[1] + player_cards[2] + player_cards[3] > 21:
+      print("you are bust, you loose")
+      print(f"Player has {player_cards}")
+    elif player_cards[0] + player_cards[1] + player_cards[2] + player_cards[4]< 21:
+      hit_two = input("Do you want to hit again")
+    elif player_cards[0] + player_cards[1] + player_cards[2] + player_cards[4] == 21:
+      print ("21 you win")
+      place_bet(bet)
+
+def place_bet(bet):
+  if player_cards == 21:
+    winning = bet * 2
+    print(winning)
+
+def end_game():
+  if player_total1 > dealer_total:
+    print(f"you win {player_total1}")
+    place_bet(bet)
+  elif player_total1 < dealer_total:
+    print("you loose, House wins")
+  
+
+def intro():
+
+  print("Welcome, welcome, Welcome! To Topher's Blackjack o Rama")
+
+  print("         ")
+
+  print("Place your bets!, Place your bets! folks! Easy money! easy money!")
+
+  print("       ")
+
+intro()
+
+bet =input("How much do you want to bet? Double your money if you win!")
+
+deck = [2,3,4,5,6,7,8,9,10,10,10,10, 11]
+
+suit = ["K", "D", "S", "H"]
+
+player_cards = []
+
+dealer_cards = []
+
+card_1 = random.choice(deck) 
+
+card_2 = random.choice(deck)
+
+card_3 = random.choice(deck)
+
+card_4 = random.choice(deck)
+
+card_5 = random.choice(deck)
+
+card_6 = random.choice(deck)
+
+card_7 = random.choice(deck)
+
+card_8 = random.choice(deck)
+
+for x in range(1):
+  player_cards.append(card_1)
+  player_cards.append(card_2)
+
+print(f"Player has {player_cards}")
+
+for x in range(1):
+  dealer_cards.append(card_3)
+  dealer_cards.append(card_4)
+
+print(f"Dealer has {dealer_cards}")
+
+#add cards in player and dealer list
+
+player_total1 = player_cards[0] + player_cards[1] + player_cards[2] + player_cards[3] 
+  
+dealer_total = dealer_cards[0] + dealer_cards[1]
+
+if player_cards[0] + player_cards[1] < 21:
+  hit = input("do you want to hit?")
+
+elif player_cards[0] + player_cards[1] > 21:
+  print("sorry you are bust")
+
+elif player_cards[0] + player_cards[1] == 21:
+  print("21 you win")
+  place_bet()
+
+if hit == "y":
+  hit_one()
+
+if hit == "n":
+  end_game()
+  place_bet(bet)
+
+
+  # need to do ace handeling of 1 or 11 Value
+  #need to add in total for more cards to end_game
+  #need to add in suit
+  # need to add in dealer additional card if vaule to low like less than 10
+  # add total winning to bank value to keep track
+  # continue play another game
+
+
+
+
+
+  ####look at hints from video to clean up some my functions.
+  #much more elegant the way she did them.
