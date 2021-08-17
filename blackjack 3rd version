@@ -1,0 +1,196 @@
+#fixed printing errors 
+# still does't reconize quit or n on play_again
+
+
+
+
+
+
+
+import random
+from replit import clear
+
+
+
+
+
+
+
+
+def intro():
+
+  clear()
+
+  print("Welcome, welcome, Welcome! To Topher's Blackjack o Rama")
+
+  print("         ")
+
+  print("Place your bets!, Place your bets! folks! Easy money! easy money!")
+
+  print("       ")
+
+
+
+
+def play_again():
+  
+  c = input("would you like to play again? pg ")
+  
+  if c == "yes" or "y":
+      
+    intro()
+    play_game()
+
+  if c == "no" or "n":
+    print("thanks for playing") 
+
+
+
+def player_score(user):
+  if add_cards(user) > 21:
+    print ("you are bust sir")
+    play_again()
+  elif add_cards(user) < 21:
+    hit = input("Do you want to hit sir? ")
+    
+    if hit == 'y':
+      deal_another(user)
+      print(f"Player has {user}")
+      print(f"player  now has {add_cards(user)}")
+      if add_cards(user) > 21:
+        print ("you are bust sir")
+        play_again()
+      elif add_cards(player_cards)> add_cards(dealer_cards):
+        print("you win congratulations")
+        print(place_bet(bet))
+        play_again()
+      elif add_cards(player_cards) < add_cards(dealer_cards):
+        print("you loose sorry")
+        play_again()
+    
+    elif hit == "n":
+      if add_cards(player_cards)> add_cards(dealer_cards):
+        print("you win congratulations")
+        print(place_bet(bet))
+        play_again()
+      elif add_cards(player_cards) < add_cards(dealer_cards):
+        print("you loose sorry")
+        play_again()
+
+  elif add_cards(user) == 21:
+    print("21 you win congratulations")
+    print(place_bet(bet))
+    play_again()
+
+# make same function for dealer cards or make this take argument so can be any
+      
+
+    # elif hi == 'n':
+    #   end_game()   
+  
+
+
+
+
+
+
+
+def dealer_play(user):
+  if add_cards(dealer_cards) == 21:
+    print("21 the house wins")
+    play_again()
+  elif add_cards(dealer_cards) <= 15:
+    deal_another(user)
+    print (f"house has {add_cards(dealer_cards)}")
+    print(f" dealer has {dealer_cards}")
+    if add_cards(dealer_cards) > 21:
+      print("The house is over 21 you win sir")
+      print(place_bet(bet))
+      play_again()
+
+
+
+
+
+def place_bet(Amount):
+  
+    winning = int(Amount) * 2
+    print(f"you win {winning}")
+    play_again()
+    # x = input ("Wo3uld you like to play again?")
+    # if x == "yes" or "y":
+    #   intro()
+    #   play_again()
+    # if x == "no" or "n":
+    #   print("thanks for playing")
+      
+
+
+def deal_cards():
+  """returns random card"""
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  ##cards = [11,12,3] test
+  card = random.choice(cards)
+  return card
+
+def deal_another(y):
+  y.append(deal_cards())
+
+
+def add_cards(cards):
+  """cards refers to player_cards or dealer_cards lists"""
+  
+  if 11 in cards and sum(cards) > 21:
+    cards.remove(11)
+    cards.append(1)
+    print (f"player now has {player_cards}")
+    
+    return sum(cards)
+  else:
+    return sum(cards)
+
+#player_cards = []
+#dealer_cards = []
+
+
+def deal():
+  for x in range(2):
+    player_cards.append(deal_cards())
+    dealer_cards.append(deal_cards())
+
+def play_game():
+  global player_cards, dealer_cards, bet
+  bet = input("How much do you want to bet? Double your money if you win! ")
+
+  player_cards = []
+  dealer_cards = []
+
+  deal()
+
+
+  print(f"Player has {player_cards}")
+
+  print(f"Dealer has {dealer_cards}")
+
+  #deal_another(player_cards)
+
+  #print(f" 1 Player has {player_cards}")
+
+  player_score(player_cards)
+  dealer_play(dealer_cards)
+
+
+    
+
+
+#maybe make a while loop here
+
+intro()
+play_game()
+
+
+
+
+
+
+
