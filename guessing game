@@ -1,0 +1,90 @@
+#Number Guessing Game Objectives:
+
+# Include an ASCII art logo.
+# Allow the player to submit a guess for a number between 1 and 100.
+# Check user's guess against actual answer. Print "Too high." or "Too low." depending on the user's answer. 
+# If they got the answer correct, show the actual answer to the player.
+# Track the number of turns remaining.
+# If they run out of turns, provide feedback to the player. 
+# Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
+
+
+import random
+from replit import clear
+
+
+answer = random.randint(0, 101)
+#print(answer)
+
+# def answer_choice():
+#   answer = random.randint(0, 101)
+
+#   print(answer)
+
+def user_input():
+  
+  print("Welcome to the Amazing game of GUESS THE NUMBER!")
+  
+  print("")
+  
+  print("Where you have 5 or 10 trys to guess number between 1 and 100 depending on choice of easy or hard.")
+  
+  print("")
+  
+
+  c = input("Would you like to choose easy or hard? ")
+
+  if c == "easy":
+    print('test')
+    game(10)
+    
+  elif c == "hard":
+    game(5)
+
+def game(n):
+
+  guess_num = n
+
+  x = int(input("Guess a number between 1 and 100. "))
+  #while x != answer:
+    
+  if guess_num == 0:
+    print("out of guesses. game over")
+    print(f"the number was {answer}")
+    play_again()
+
+  elif x < answer:
+    print("I'm sorry that is too low guess again")
+    guess_num -= 1
+    print(f"guesses remaining {guess_num}")
+    game(guess_num)
+
+  elif x > answer:
+    print("I'm sorry your too high.")
+    guess_num -= 1
+    print(f"guesses remaining {guess_num}")
+    game(guess_num)
+  
+  elif x == answer:
+    print("your guessed correctly. You win!")
+    play_again()
+
+
+def play_again():
+  
+  b =  input("do you want to play again? ")
+
+  if b == "y":
+    clear()
+    user_input()
+
+  elif b == "n":
+    print("Thanks for playing")
+    clear()
+
+
+user_input()
+#input_2()
+#game(10)
+
+#need to fix replay play again part
